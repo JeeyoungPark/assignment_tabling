@@ -1,11 +1,24 @@
 import '~/scss/style.scss';
+import { request } from './utils/api';
 
 export default function App({ $target }) {
-  const $header = document.createElement('header');
-  const $h1 = document.createElement('h1');
+  this.state = {
+    reservations: [],
+  };
 
-  $header.appendChild($h1);
-  $h1.innerHTML = 'hello world';
+  this.setState = nextState => {
+    this.state = nextState;
+  };
 
-  $target.appendChild($header);
+  const init = async () => {
+    try {
+      const { reservations } = await request('/v1/store/9533/reservations');
+
+      this.setState({ ...this.state, reservations });
+    } catch (e) {
+      alert(e);
+    }
+  };
+
+  init();
 }

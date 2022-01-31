@@ -28,5 +28,8 @@ module.exports = {
   ],
   devServer: {
     historyApiFallback: true,
+    // proxy: { // CORS 문제 해결
+    //   './api': 'http://localhost:8080',
+    // },
   },
 };
