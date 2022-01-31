@@ -3,6 +3,18 @@
 $bg-color: #ced8e4;
 $button-color: blue;
 
+$size-font-title: 40px;
+
 body {
   background-color: $bg-color;
+}
+
+header {
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  h1 {
+    font-size: $size-font-title;
+  }
 }

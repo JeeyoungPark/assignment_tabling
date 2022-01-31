@@ -1,10 +1,13 @@
 import '~/scss/style.scss';
+import Header from './components/Header';
 import { request } from './utils/api';
 
 export default function App({ $target }) {
   this.state = {
     reservations: [],
   };
+
+  const header = new Header({ $target });
 
   this.setState = nextState => {
     this.state = nextState;
