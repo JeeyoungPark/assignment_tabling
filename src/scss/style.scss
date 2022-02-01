@@ -1,20 +1,96 @@
 @import './reset.scss';
 
-$bg-color: #ced8e4;
-$button-color: blue;
+// 색상
+$color-background: #ced8e4;
+$color-button: blue;
+$color-white: #ffffff;
 
-$size-font-title: 40px;
+// 사이즈
+$detail-wrapper-width: 500px;
+$header-height: 150px;
+
+$font-xs: 0.625em;
+$font-sm: 0.812em;
+$font-md: 1em;
+$font-lg: 1.125em;
+
+// 여백
+$spacing-xs: 4px;
+$spacing-sm: 8px;
+$spacing-md: 16px;
+$spacing-lg: 20px;
 
 body {
-  background-color: $bg-color;
+  background-color: $color-background;
 }
 
 header {
-  height: 150px;
+  height: $header-height;
   display: flex;
   align-items: center;
   justify-content: center;
+
   h1 {
-    font-size: $size-font-title;
+    font-size: 2.5em;
+  }
+}
+
+.list-wrapper {
+  width: calc(100% - $detail-wrapper-width);
+  height: calc(100vh - $header-height);
+  padding: 0 $spacing-xs $spacing-sm $spacing-sm;
+
+  ul {
+    height: 100%;
+    overflow: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    li:not(:first-child) {
+      margin-top: $spacing-sm;
+    }
+  }
+}
+
+.list {
+  height: 130px;
+  display: flex;
+  padding: $spacing-lg; // padding 값 수정
+  background-color: $color-white;
+  border-radius: 10px;
+
+  & > * {
+    margin: auto;
+  }
+
+  &-state {
+    width: 70px;
+    display: flex;
+    flex-shrink: 0;
+    font-size: $font-md;
+  }
+
+  &-content {
+    flex-grow: 1;
+    margin: auto $spacing-lg;
+    font-size: $font-md;
+
+    div:not(:first-child) {
+      margin-top: $spacing-xs;
+    }
+  }
+
+  &-button {
+    width: 70px;
+    height: 40px;
+    flex-shrink: 0;
+    border: none;
+    border-radius: 5px;
+    font-size: $font-md;
+    cursor: pointer;
   }
 }
