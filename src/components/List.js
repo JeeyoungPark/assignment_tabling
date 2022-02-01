@@ -1,4 +1,4 @@
-export default function List({ $target, initialState = {} }) {
+export default function List({ $target, initialState = {}, onClick }) {
   const $section = document.createElement('section');
 
   $section.className = 'list-wrapper';
@@ -21,7 +21,7 @@ export default function List({ $target, initialState = {} }) {
         ${reservations
           ?.map(
             list => `
-          <li class="list">
+          <li class="list" data-id="${list.id}">
             <div class="list-state">
               <div>${list.timeReserved}</div>
               <div>${list.status}</div>
@@ -50,4 +50,17 @@ export default function List({ $target, initialState = {} }) {
   };
 
   this.render();
+
+  $section.addEventListener('click', event => {
+    const $list = event.target.closest('.list');
+
+    if ($list) {
+      const { id } = $list.dataset;
+      const targetList = this.state.reservations.find(list => list.id === id);
+
+      if (targetList) {
+        onClick(targetList);
+      }
+    }
+  });
 }

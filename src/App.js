@@ -7,7 +7,6 @@ import { request } from './utils/api';
 export default function App({ $target }) {
   this.state = {
     reservations: [],
-    clickedId: '',
     clickedReservation: {},
   };
 
@@ -16,6 +15,13 @@ export default function App({ $target }) {
   const list = new List({
     $target,
     initialState: this.state.reservations,
+    onClick: targetList => {
+      console.log(targetList);
+      this.setState({
+        ...this.state,
+        clickedReservation: targetList,
+      });
+    },
   });
 
   const detail = new Detail({
