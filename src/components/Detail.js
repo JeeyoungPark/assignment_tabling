@@ -4,13 +4,12 @@ export default function Detail({ $target, initialState = {} }) {
   $aside.className = 'detail-wrapper';
   $target.appendChild($aside);
 
-  this.state = initialState;
+  this.state = initialState; // {clickedres: {}}
 
   this.setState = nextState => {
-    if (this.state.clickedReservation !== nextState.clickedReservation) {
-      this.state = nextState;
-      this.render();
-    }
+    this.state = nextState;
+    console.log('Detail 렌더한다');
+    this.render();
   };
 
   this.render = () => {
