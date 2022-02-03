@@ -1,29 +1,8 @@
-@import 'reset', 'mixin';
-
-// 색상
-$color-background: #ced8e4;
-$color-button: #162149;
-$color-white: #ffffff;
-$color-reserved: #3bb94c;
-$color-seated: #162149;
-
-// 사이즈
-$detail-wrapper-width: 500px;
-$header-height: 150px;
-
-$font-xs: 0.625em;
-$font-sm: 0.812em;
-$font-md: 1em;
-$font-lg: 1.125em;
-
-// 여백
-$spacing-xs: 4px;
-$spacing-sm: 8px;
-$spacing-md: 16px;
-$spacing-lg: 20px;
+@import 'reset', 'mixins', 'variables';
 
 body {
   background-color: $color-background;
+  overflow: hidden;
 }
 
 header {
@@ -151,19 +130,29 @@ header {
 
     display: block;
 
-    &.close {
-      display: none;
-    }
-
     .detail {
       width: 100%;
       position: absolute;
       top: 80px;
       height: calc(100vh - 80px);
+      @include animation(0, 1s, slideUp);
+    }
 
-      .button-close {
-        display: block;
+    @include keyframe(slideUp) {
+      0% {
+        transform: translateY(1000px);
       }
+      100% {
+        transform: translateY(0);
+      }
+    }
+
+    .button-close {
+      display: block;
+    }
+
+    &.close {
+      display: none;
     }
   }
 }
@@ -180,10 +169,10 @@ header {
 
     .detail {
       height: 100%;
+    }
 
-      .button-close {
-        display: none;
-      }
+    .button-close {
+      display: none;
     }
   }
 }
