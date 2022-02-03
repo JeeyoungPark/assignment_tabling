@@ -22,7 +22,8 @@ Desktop과 Mobile을 모두 지원하는 예약 목록 화면
 │    │     └── variables.scss
 │    └── utils
 │          ├── api.js
-│          └── formatTime.js
+│          ├── validate.js
+│          └── format.js
 ├── .eslintrc.js
 ├── .postcssrc.js
 ├── .prettierrc.js
@@ -35,11 +36,11 @@ Desktop과 Mobile을 모두 지원하는 예약 목록 화면
 
 ### 스크린 너비 1024픽셀 기준 Mobile과 Desktop 전환
 
-- 예약 상태가 "done"일 경우 예약 목록 내 미표출
+- 예약 상태가 `done`일 경우 예약 목록 내 미표출
 - 초기 예약 상세는 첫 번째 예약 아이템으로 표출
 - 예약 아이템 및 예약 상세의 데이터 레이아웃 유지
   - 시간 HH:MM 형식
-  - 성인 OO 아이 OO
+  - 성인 00 아이 00
   - 메뉴명(갯수)[, 메뉴명(갯수)]
   - 예약자명 - 테이블명[, 테이블명]
 
@@ -53,5 +54,5 @@ Desktop과 Mobile을 모두 지원하는 예약 목록 화면
 ### 팝업 열고 닫기
 
 - 팝업 표출 시, slide-up으로 fade-in 애니메이션 처리
-- 닫기 버튼 클릭 시 팝업 종료
-- dim 영역 터치 시 팝업 종료
+- `닫기` 버튼 클릭 시 팝업 종료
+- `dim` 영역 터치 시 팝업 종료
