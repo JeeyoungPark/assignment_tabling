@@ -1,4 +1,5 @@
 import { formatTime } from '~/utils/format';
+import { checkStateType } from '~/utils/validate';
 
 export default function Detail({ $target, initialState = {} }) {
   const $aside = document.createElement('aside');
@@ -13,8 +14,13 @@ export default function Detail({ $target, initialState = {} }) {
   this.state = initialState;
 
   this.setState = nextState => {
-    this.state = nextState;
-    this.render();
+    if (
+      checkStateType(nextState, 'Object') &&
+      checkStateType(nextState.clickedReservation, 'Object')
+    ) {
+      this.state = nextState;
+      this.render();
+    }
   };
 
   this.render = () => {

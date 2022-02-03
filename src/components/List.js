@@ -1,4 +1,5 @@
 import { formatTime, formatNumber } from '~/utils/format';
+import { checkStateType } from '~/utils/validate';
 
 export default function List({
   $target,
@@ -15,11 +16,17 @@ export default function List({
 
   this.setState = nextState => {
     if (
-      this.state.reservations !== nextState.reservations ||
-      this.state.clickedReservationId !== nextState.clickedReservationId
+      checkStateType(nextState, 'Object') &&
+      checkStateType(nextState.reservations, 'Array') &&
+      checkStateType(nextState.clickedReservationId, 'String')
     ) {
-      this.state = nextState;
-      this.render();
+      if (
+        this.state.reservations !== nextState.reservations ||
+        this.state.clickedReservationId !== nextState.clickedReservationId
+      ) {
+        this.state = nextState;
+        this.render();
+      }
     }
   };
 
