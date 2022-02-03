@@ -11,9 +11,10 @@
 <br>
 
 ## 목차
-1. [개발환경](https://github.com/JeeyoungPark/assignment_tabling/edit/main/README.md#-%EA%B0%9C%EB%B0%9C-%ED%99%98%EA%B2%BD)
-2. [폴더구조](https://github.com/JeeyoungPark/assignment_tabling/edit/main/README.md#-%ED%8F%B4%EB%8D%94-%EA%B5%AC%EC%A1%B0)
-3. [주요기능](https://github.com/JeeyoungPark/assignment_tabling/edit/main/README.md#-%EC%A3%BC%EC%9A%94-%EA%B8%B0%EB%8A%A5)
+1. [개발 환경](https://github.com/JeeyoungPark/assignment_tabling/edit/main/README.md#-%EA%B0%9C%EB%B0%9C-%ED%99%98%EA%B2%BD)
+2. [실행 방법](https://github.com/JeeyoungPark/assignment_tabling/edit/main/README.md#%EC%8B%A4%ED%96%89-%EB%B0%A9%EB%B2%95)
+3. [폴더 구조](https://github.com/JeeyoungPark/assignment_tabling/edit/main/README.md#-%ED%8F%B4%EB%8D%94-%EA%B5%AC%EC%A1%B0)
+4. [주요 기능](https://github.com/JeeyoungPark/assignment_tabling/edit/main/README.md#-%EC%A3%BC%EC%9A%94-%EA%B8%B0%EB%8A%A5)
 
 <br>
 
@@ -24,6 +25,15 @@
 - Prettier
 - axios
 - webpack
+
+<br>
+
+## 실행 방법
+### 1. 패키지 설치
+- `npm i` 으로 패키지를 설치합니다.
+
+### 2. 실행
+- `npm run start` 으로 프로젝트를 실행합니다.
 
 <br>
 
