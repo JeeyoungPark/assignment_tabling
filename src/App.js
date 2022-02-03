@@ -56,7 +56,7 @@ export default function App({ $target }) {
         );
 
         // 리스트가 없을 경우 -1로 임의 설정
-        targetId = validReservations.length ? validReservations[0].id : -1;
+        targetId = validReservations.length ? validReservations[0].id : 'null';
       }
 
       this.setState({
@@ -74,9 +74,11 @@ export default function App({ $target }) {
 
   this.setState = nextState => {
     this.state = nextState;
-    this.state.clickedReservation = this.state.reservations.find(
-      list => list.id === this.state.clickedReservationId,
-    );
+    this.state.clickedReservation = {
+      ...this.state.reservations.find(
+        list => list.id === this.state.clickedReservationId,
+      ),
+    };
 
     list.setState({
       reservations: this.state.reservations,
