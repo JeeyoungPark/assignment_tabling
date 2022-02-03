@@ -2,10 +2,10 @@
 
 <div align="center">
   <span>
-  <img src="https://user-images.githubusercontent.com/80609368/152366263-f10f78cb-ac5b-4738-95fa-649199bd8540.png" style="width: 300px;"/>
+  <img src="https://user-images.githubusercontent.com/80609368/152366263-f10f78cb-ac5b-4738-95fa-649199bd8540.png" style="width: 515px;"/>
   </span>
   <span>
-  <img src="https://user-images.githubusercontent.com/80609368/152366076-32e2d1ac-1dec-411c-b75f-7fdea47eadb2.png" style="height: 200px;" /></span>
+  <img src="https://user-images.githubusercontent.com/80609368/152366076-32e2d1ac-1dec-411c-b75f-7fdea47eadb2.png" style="height: 300px;" /></span>
 </div>
 
 <br>
