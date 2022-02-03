@@ -39,10 +39,10 @@ header {
 
 .list-wrapper,
 .detail-wrapper {
-  height: calc(100vh - $header-height - $spacing-lg);
+  height: calc(100vh - $header-height - $spacing-md);
 }
 .list-wrapper {
-  width: calc(100% - $detail-wrapper-width - $spacing-lg);
+  width: calc(100% - $detail-wrapper-width - $spacing-sm);
   padding: 0 $spacing-sm;
 
   ul {
@@ -86,6 +86,10 @@ header {
     display: flex;
     flex-shrink: 0;
     font-size: $font-md;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $spacing-sm;
 
     // mixin으로 변경 가능
     [data-status='reserved'] {
@@ -128,7 +132,7 @@ header {
   width: $detail-wrapper-width;
   position: fixed;
   top: $header-height;
-  right: $spacing-md;
+  right: $spacing-sm;
   background-color: $color-white;
   border-radius: 10px;
 }

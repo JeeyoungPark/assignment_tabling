@@ -1,3 +1,5 @@
+import { formatTime } from '../utils/formatTime';
+
 export default function List({
   $target,
   initialState = {}, // {reser: [], clickedResID: ''}
@@ -45,7 +47,7 @@ export default function List({
             clickedReservationId === list.id ? 'clicked' : ''
           }" data-id="${list.id}">
             <div class="list-state">
-              <div>${list.timeReserved}</div>
+              <div>${formatTime(list.timeReserved)}</div>
               <div data-status=${list.status}>${
               list.status === 'reserved' ? '예약' : '착석 중'
             }</div>

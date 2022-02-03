@@ -1,3 +1,5 @@
+import { formatTime } from '../utils/formatTime';
+
 export default function Detail({ $target, initialState = {} }) {
   const $aside = document.createElement('aside');
 
@@ -17,12 +19,14 @@ export default function Detail({ $target, initialState = {} }) {
       return `
         <div>예약 상태</div>
         <div>${
-          !data?.status ? '' : data.status === 'seated' ? '착석' : '예약 중'
+          !data?.status ? '' : data.status === 'seated' ? '착석 중' : '예약'
         }</div>
         <div>예약 시간</div>
-        <div>${!data?.timeReserved ? '' : data.timeReserved}</div>
+        <div>${!data?.timeReserved ? '' : formatTime(data.timeReserved)}</div>
         <div>접수 시간</div>
-        <div>${!data?.timeRegistered ? '' : data.timeRegistered}</div>
+        <div>${
+          !data?.timeRegistered ? '' : formatTime(data.timeRegistered)
+        }</div>
       `;
     };
 
