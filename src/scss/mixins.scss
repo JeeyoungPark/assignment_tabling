@@ -1,6 +1,5 @@
 @import 'variables';
 
-// 말줄임표
 @mixin ellipsis($line-cnt: 1) {
   @if ($line-cnt == 1) {
     overflow: hidden;
@@ -15,14 +14,12 @@
   }
 }
 
-// mobile 스크린
 @mixin mobile {
   @media (min-width: #{$breakpoints-mobile}) and (max-width: #{$breakpoints-desktop - 1px}) {
     @content;
   }
 }
 
-// desktop 스크린
 @mixin desktop {
   @media (min-width: #{$breakpoints-desktop}) {
     @content;
@@ -33,7 +30,6 @@
   animation-delay: $delay;
   animation-duration: $duration;
   animation-name: $name;
-  // animation-iteration-count: infinite;
 }
 
 @mixin keyframe($animation_name) {

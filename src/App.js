@@ -1,8 +1,8 @@
 import '~/scss/style.scss';
-import Header from './components/Header';
-import List from './components/List';
-import Detail from './components/Detail';
-import { request } from './utils/api';
+import Header from '~/components/Header';
+import List from '~/components/List';
+import Detail from '~/components/Detail';
+import { request } from '~/utils/api';
 
 export default function App({ $target }) {
   this.state = {
@@ -24,21 +24,16 @@ export default function App({ $target }) {
        * 1. clickedId 변경
        * 2. List컴포넌트와 Detail컴포넌트 다시 렌더링
        */
-      console.log('리스트 클릭이벤트 동작!!');
-
       const $modal = document.querySelector('.detail-wrapper');
       $modal.classList.remove('close');
 
       this.setState({
         ...this.state,
-        // clickedReservation: targetList,
         clickedReservationId: targetList.id,
       });
     },
     onClickButton: (id, status) => {
-      console.log('버튼클릭이벤트 동작!!');
       let targetId = id;
-      console.log('targetId', targetId);
       let reservations = [...this.state.reservations];
 
       // "착석" 버튼 클릭시 -> status 상태 변경
@@ -50,10 +45,9 @@ export default function App({ $target }) {
         });
       } else if (status === 'seated') {
         // "퇴석" 버튼 클릭시
-        // -> 1)satus 상태 변경, 2)clicked 아이디와 리스트 임의 설정
+        // 1) status 상태 변경, clicked 아이디를 첫번째 리스트로 설정
         reservations = reservations.map(list => {
           if (list.id === targetId) list.status = 'done';
-
           return list;
         });
 
@@ -61,11 +55,8 @@ export default function App({ $target }) {
           list => list.status !== 'done',
         );
 
-        if (validReservations.length) {
-          targetId = validReservations[0].id;
-        } else {
-          targetId = -1;
-        }
+        // 리스트가 없을 경우 -1로 임의 설정
+        targetId = validReservations.length ? validReservations[0].id : -1;
       }
 
       this.setState({
@@ -82,7 +73,6 @@ export default function App({ $target }) {
   });
 
   this.setState = nextState => {
-    console.log('App setState한다');
     this.state = nextState;
     this.state.clickedReservation = this.state.reservations.find(
       list => list.id === this.state.clickedReservationId,
@@ -99,7 +89,6 @@ export default function App({ $target }) {
   };
 
   const getReservations = async () => {
-    console.log('서버에서 데이터 가져옴!!!');
     const { reservations } = await request('/v1/store/9533/reservations');
     const firstReservation = reservations[0];
 

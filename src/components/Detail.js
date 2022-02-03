@@ -1,4 +1,4 @@
-import { formatTime } from '../utils/formatTime';
+import { formatTime } from '~/utils/format';
 
 export default function Detail({ $target, initialState = {} }) {
   const $aside = document.createElement('aside');
@@ -10,11 +10,10 @@ export default function Detail({ $target, initialState = {} }) {
     $aside.classList.add('close');
   };
 
-  this.state = initialState; // {clickedres: {}}
+  this.state = initialState;
 
   this.setState = nextState => {
     this.state = nextState;
-    console.log('Detail 렌더한다');
     this.render();
   };
 
@@ -69,7 +68,6 @@ export default function Detail({ $target, initialState = {} }) {
     const $detail = event.target.closest('.detail');
 
     if ($closeButton || !$detail) {
-      console.log('닫힘 버튼 누름');
       onCloseModal();
     }
   });

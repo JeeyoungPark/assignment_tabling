@@ -1,8 +1,8 @@
-import { formatTime } from '../utils/formatTime';
+import { formatTime, formatNumber } from '~/utils/format';
 
 export default function List({
   $target,
-  initialState = {}, // {reser: [], clickedResID: ''}
+  initialState = {},
   onClickList,
   onClickButton,
 }) {
@@ -14,24 +14,17 @@ export default function List({
   this.state = initialState;
 
   this.setState = nextState => {
-    // next: {reser: [], clickedResID: ''}
     if (
       this.state.reservations !== nextState.reservations ||
       this.state.clickedReservationId !== nextState.clickedReservationId
     ) {
       this.state = nextState;
-
-      console.log('리스트 렌더한다');
       this.render();
     }
   };
 
   this.render = () => {
-    /**
-     * 렌더하기 전
-     * 1. status === done인 list 제외
-     * 2. clickedId === id인 list의 클래스네임 변경 -> css 효과 적용
-     */
+    // status가 done인 list 제외
     const validReservations = this.state.reservations?.filter(
       list => list.status !== 'done',
     );
@@ -44,7 +37,7 @@ export default function List({
           ?.map(
             list => `
           <li class="list ${
-            clickedReservationId === list.id ? 'clicked' : ''
+            list.id === clickedReservationId ? 'clicked' : ''
           }" data-id="${list.id}">
             <div class="list-state">
               <div>${formatTime(list.timeReserved)}</div>
@@ -56,9 +49,9 @@ export default function List({
               <div class="ellipsis-1">${list.customer.name} - ${list.tables.map(
               table => `${table.name}`,
             )}</div>
-              <div class="ellipsis-1">성인 ${list.customer.adult} 아이 ${
-              list.customer.child
-            }</div>
+              <div class="ellipsis-1">성인 ${formatNumber(
+                list.customer.adult,
+              )} 아이 ${formatNumber(list.customer.child)}</div>
               <div class="ellipsis-1">${list.menus.map(
                 menu => `
                 ${menu.name}(${menu.qty})
@@ -92,7 +85,7 @@ export default function List({
         const { status } = $button.dataset;
 
         onClickButton(id, status);
-        return; // 버튼 클릭시 onListClidk 이벤트가 같이 동작하는 걸 방지;
+        return; // 버튼 클릭시 onListClick 이벤트가 같이 동작하는 걸 방지
       }
 
       if (targetList) {

@@ -12,12 +12,17 @@ $color-seated: #162149;
 // 사이즈
 $detail-wrapper-width: 500px;
 $header-height: 150px;
+$modal-position-top: 80px;
 
 // 폰트
 $font-xs: 0.625em;
 $font-sm: 0.812em;
 $font-md: 1em;
 $font-lg: 1.125em;
+
+// border
+$border-normal: 2px solid darken($color-background, 30%);
+$border-bold: 4px solid darken($color-background, 30%);
 
 // 여백
 $spacing-xs: 4px;

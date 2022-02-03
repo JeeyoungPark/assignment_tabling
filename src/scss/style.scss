@@ -1,5 +1,14 @@
 @import 'reset', 'mixins', 'variables';
 
+@include keyframe(slideUp) {
+  0% {
+    transform: translateY(1000px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
 body {
   background-color: $color-background;
   overflow: hidden;
@@ -58,11 +67,11 @@ header {
   gap: $spacing-md;
 
   &:hover {
-    border: 2px solid darken($color-background, 30%);
+    border: $border-normal;
   }
 
   &.clicked {
-    border: 4px solid darken($color-background, 30%);
+    border: $border-bold;
   }
 
   & > * {
@@ -83,7 +92,6 @@ header {
     align-items: center;
     gap: $spacing-sm;
 
-    // mixin으로 변경 가능
     [data-status='reserved'] {
       color: $color-reserved;
     }
@@ -133,18 +141,9 @@ header {
     .detail {
       width: 100%;
       position: absolute;
-      top: 80px;
-      height: calc(100vh - 80px);
+      top: $modal-position-top;
+      height: calc(100vh - $modal-position-top);
       @include animation(0, 1s, slideUp);
-    }
-
-    @include keyframe(slideUp) {
-      0% {
-        transform: translateY(1000px);
-      }
-      100% {
-        transform: translateY(0);
-      }
     }
 
     .button-close {
