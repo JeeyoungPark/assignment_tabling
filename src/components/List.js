@@ -53,11 +53,13 @@ export default function List({
             }</div>
             </div>
             <div class="list-content">
-              <div>${list.customer.name} - ${list.tables.map(
+              <div class="ellipsis-1">${list.customer.name} - ${list.tables.map(
               table => `${table.name}`,
             )}</div>
-              <div>성인 ${list.customer.adult} 아이 ${list.customer.child}</div>
-              <div>${list.menus.map(
+              <div class="ellipsis-1">성인 ${list.customer.adult} 아이 ${
+              list.customer.child
+            }</div>
+              <div class="ellipsis-1">${list.menus.map(
                 menu => `
                 ${menu.name}(${menu.qty})
               `,

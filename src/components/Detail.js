@@ -37,9 +37,9 @@ export default function Detail({ $target, initialState = {} }) {
         <div>고객 등급</div>
         <div>${!data ? '' : data.level}</div>
         <div>고객 메모</div>
-        <div>${!data ? '' : data.memo}</div>
+        <div class="ellipsis-3">${!data ? '' : data.memo}</div>
         <div>요청 사항</div>
-        <div>${!data ? '' : data.request}</div>
+        <div class="ellipsis-3">${!data ? '' : data.request}</div>
       `;
     };
 
