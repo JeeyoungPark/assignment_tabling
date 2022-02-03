@@ -19,19 +19,23 @@ export default function App({ $target }) {
       reservations: this.state.reservations,
       clickedReservationId: this.state.clickedReservationId,
     },
-    onListClick: targetList => {
+    onClickList: targetList => {
       /**
        * 1. clickedId 변경
        * 2. List컴포넌트와 Detail컴포넌트 다시 렌더링
        */
       console.log('리스트 클릭이벤트 동작!!');
+
+      const $modal = document.querySelector('.detail-wrapper');
+      $modal.classList.remove('close');
+
       this.setState({
         ...this.state,
         // clickedReservation: targetList,
         clickedReservationId: targetList.id,
       });
     },
-    onButtonClick: (id, status) => {
+    onClickButton: (id, status) => {
       console.log('버튼클릭이벤트 동작!!');
       let targetId = id;
       console.log('targetId', targetId);
@@ -56,7 +60,6 @@ export default function App({ $target }) {
         const validReservations = reservations.filter(
           list => list.status !== 'done',
         );
-        console.log('valid', validReservations);
 
         if (validReservations.length) {
           targetId = validReservations[0].id;

@@ -3,8 +3,8 @@ import { formatTime } from '../utils/formatTime';
 export default function List({
   $target,
   initialState = {}, // {reser: [], clickedResID: ''}
-  onListClick,
-  onButtonClick,
+  onClickList,
+  onClickButton,
 }) {
   const $section = document.createElement('section');
 
@@ -91,12 +91,12 @@ export default function List({
       if ($button) {
         const { status } = $button.dataset;
 
-        onButtonClick(id, status);
+        onClickButton(id, status);
         return; // 버튼 클릭시 onListClidk 이벤트가 같이 동작하는 걸 방지;
       }
 
       if (targetList) {
-        onListClick(targetList);
+        onClickList(targetList);
       }
     }
   });

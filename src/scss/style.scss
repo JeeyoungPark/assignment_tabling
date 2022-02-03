@@ -1,4 +1,4 @@
-@import './reset.scss';
+@import 'reset', 'mixin';
 
 // 색상
 $color-background: #ced8e4;
@@ -22,21 +22,6 @@ $spacing-sm: 8px;
 $spacing-md: 16px;
 $spacing-lg: 20px;
 
-// mixin
-@mixin ellipsis($line-cnt: 1) {
-  @if ($line-cnt == 1) {
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-  } @else {
-    display: -webkit-box;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: $line-cnt;
-  }
-}
-
 body {
   background-color: $color-background;
 }
@@ -52,12 +37,20 @@ header {
   }
 }
 
-.list-wrapper,
-.detail-wrapper {
-  height: calc(100vh - $header-height - $spacing-md);
+@include mobile {
+  .list-wrapper {
+    width: 100%;
+  }
 }
+
+@include desktop {
+  .list-wrapper {
+    width: calc(100% - $detail-wrapper-width - $spacing-sm);
+  }
+}
+
 .list-wrapper {
-  width: calc(100% - $detail-wrapper-width - $spacing-sm);
+  height: calc(100vh - $header-height - $spacing-md);
   padding: 0 $spacing-sm;
 
   ul {
@@ -147,22 +140,74 @@ header {
   }
 }
 
-.detail-wrapper {
-  width: $detail-wrapper-width;
-  position: fixed;
-  top: $header-height;
-  right: $spacing-sm;
-  background-color: $color-white;
-  border-radius: 10px;
+@include mobile {
+  .detail-wrapper {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+
+    display: block;
+
+    &.close {
+      display: none;
+    }
+
+    .detail {
+      width: 100%;
+      position: absolute;
+      top: 80px;
+      height: calc(100vh - 80px);
+
+      .button-close {
+        display: block;
+      }
+    }
+  }
+}
+
+@include desktop {
+  .detail-wrapper {
+    width: $detail-wrapper-width;
+    position: fixed;
+    height: calc(100vh - $header-height - $spacing-md);
+    top: $header-height;
+    right: $spacing-sm;
+    background-color: $color-white;
+    border-radius: 10px;
+
+    .detail {
+      height: 100%;
+
+      .button-close {
+        display: none;
+      }
+    }
+  }
 }
 
 .detail {
-  height: 100%;
   display: grid;
   grid-template-rows: 1fr 2fr;
   padding: $spacing-lg;
   background-color: $color-white;
   border-radius: 10px;
+
+  .button-close {
+    position: absolute;
+    top: $spacing-lg * 1.5;
+    right: $spacing-lg * 1.5;
+    border: none;
+    background-color: $color-white;
+    font-size: $font-md;
+    cursor: pointer;
+
+    &:hover {
+      font-weight: bold;
+    }
+  }
 
   & > div {
     display: grid;

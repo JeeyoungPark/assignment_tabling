@@ -1,0 +1,28 @@
+@mixin ellipsis($line-cnt: 1) {
+  @if ($line-cnt == 1) {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  } @else {
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: $line-cnt;
+  }
+}
+
+$breakpoints-mobile: 320px;
+$breakpoints-desktop: 1024px;
+
+@mixin mobile {
+  @media (min-width: #{$breakpoints-mobile}) and (max-width: #{$breakpoints-desktop - 1px}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: #{$breakpoints-desktop}) {
+    @content;
+  }
+}

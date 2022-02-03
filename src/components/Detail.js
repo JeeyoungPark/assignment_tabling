@@ -6,6 +6,10 @@ export default function Detail({ $target, initialState = {} }) {
   $aside.className = 'detail-wrapper';
   $target.appendChild($aside);
 
+  const onCloseModal = () => {
+    $aside.classList.add('close');
+  };
+
   this.state = initialState; // {clickedres: {}}
 
   this.setState = nextState => {
@@ -45,6 +49,7 @@ export default function Detail({ $target, initialState = {} }) {
 
     $aside.innerHTML = `
       <div class="detail">
+      <button class="button-close">닫기</button>
         <div class="detail-reservation">
           <h3>예약 정보</h3>
           ${reservationTemplate(this.state.clickedReservation)}
@@ -58,4 +63,20 @@ export default function Detail({ $target, initialState = {} }) {
   };
 
   this.render();
+
+  $aside.addEventListener('click', event => {
+    const $closeButton = event.target.closest('.button-close');
+    const $detail = event.target.closest('.detail');
+
+    if ($closeButton || !$detail) {
+      console.log('닫힘 버튼 누름');
+      onCloseModal();
+    }
+  });
+
+  window.addEventListener('keyup', event => {
+    if (event.key === 'Escape') {
+      onCloseModal();
+    }
+  });
 }
