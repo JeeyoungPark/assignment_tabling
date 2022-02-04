@@ -1,7 +1,9 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack');
 
 module.exports = {
+  mode: 'development',
   entry: './src/main.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -24,12 +26,20 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/index.html',
+      title: 'Hot Module Replacement',
     }),
+    new webpack.HotModuleReplacementPlugin(),
   ],
+  // webpack-dev-server 에게 localhost:8080 주소로 dist디렉토리에 있는 files을 제공
+  devtool: 'inline-source-map',
   devServer: {
+    client: {
+      overlay: {
+        errors: true,
+        warnings: false,
+      },
+    },
     historyApiFallback: true,
-    // proxy: { // CORS 문제 해결
-    //   './api': 'http://localhost:8080',
-    // },
+    hot: true,
   },
 };
