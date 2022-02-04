@@ -21,6 +21,18 @@ module.exports = {
         test: /\.s?css$/,
         use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader'],
       },
+      {
+        test: /\.js$/,
+        include: path.join(__dirname),
+        exclude: /(node_modules)|(dist)/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: [['@babel/preset-env', { targets: 'defaults' }]],
+            plugins: ['@babel/plugin-transform-runtime'],
+          },
+        },
+      },
     ],
   },
   plugins: [
